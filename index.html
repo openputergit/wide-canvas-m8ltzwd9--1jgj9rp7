@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESports League Platform</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: #0f172a;
+            color: #fff;
+        }
+        .game-card {
+            transition: transform 0.3s ease;
+        }
+        .game-card:hover {
+            transform: translateY(-5px);
+        }
+        .neon-border {
+            box-shadow: 0 0 10px #4f46e5, 0 0 20px #4f46e5, 0 0 30px #4f46e5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-slate-900 border-b border-indigo-500">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-8">
+                    <h1 class="text-2xl font-bold text-indigo-500">ESports League</h1>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="#" class="text-gray-300 hover:text-indigo-500">Games</a>
+                        <a href="#" class="text-gray-300 hover:text-indigo-500">Tournaments</a>
+                        <a href="#" class="text-gray-300 hover:text-indigo-500">Teams</a>
+                        <a href="#" class="text-gray-300 hover:text-indigo-500">News</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="loginBtn" class="px-4 py-2 text-sm rounded-lg border border-indigo-500 text-indigo-500 hover:bg-indigo-500 hover:text-white transition">Login</button>
+                    <button id="registerBtn" class="px-4 py-2 text-sm rounded-lg bg-indigo-500 text-white hover:bg-indigo-600 transition">Register</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto text-center">
+            <h1 class="text-5xl font-bold mb-8">Welcome to the Ultimate <span class="text-indigo-500">ESports League</span></h1>
+            <p class="text-xl text-gray-400 mb-12">Compete in top games, manage your team, and climb the ranks</p>
+            <div class="flex flex-wrap justify-center gap-8">
+                <div class="game-card bg-slate-800 p-6 rounded-xl w-64">
+                    <img src="https://source.unsplash.com/random/300x200?valorant" alt="Valorant" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Valorant</h3>
+                    <p class="text-gray-400 mb-4">Active Teams: 128</p>
+                    <button class="w-full py-2 bg-indigo-500 rounded-lg hover:bg-indigo-600">Join League</button>
+                </div>
+                <div class="game-card bg-slate-800 p-6 rounded-xl w-64">
+                    <img src="https://source.unsplash.com/random/300x200?cod" alt="Call of Duty" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Call of Duty</h3>
+                    <p class="text-gray-400 mb-4">Active Teams: 96</p>
+                    <button class="w-full py-2 bg-indigo-500 rounded-lg hover:bg-indigo-600">Join League</button>
+                </div>
+                <div class="game-card bg-slate-800 p-6 rounded-xl w-64">
+                    <img src="https://source.unsplash.com/random/300x200?pubg" alt="BGMI" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">BGMI</h3>
+                    <p class="text-gray-400 mb-4">Active Teams: 156</p>
+                    <button class="w-full py-2 bg-indigo-500 rounded-lg hover:bg-indigo-600">Join League</button>
+                </div>
+                <div class="game-card bg-slate-800 p-6 rounded-xl w-64">
+                    <img src="https://source.unsplash.com/random/300x200?gaming" alt="Free Fire" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Free Fire</h3>
+                    <p class="text-gray-400 mb-4">Active Teams: 112</p>
+                    <button class="w-full py-2 bg-indigo-500 rounded-lg hover:bg-indigo-600">Join League</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-slate-800 p-8 rounded-xl w-96">
+            <h2 class="text-2xl font-bold mb-6">Login</h2>
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm mb-2">Email</label>
+                    <input type="email" class="w-full p-2 rounded bg-slate-700 border border-slate-600" required>
+                </div>
+                <div>
+                    <label class="block text-sm mb-2">Password</label>
+                    <input type="password" class="w-full p-2 rounded bg-slate-700 border border-slate-600" required>
+                </div>
+                <button type="submit" class="w-full py-2 bg-indigo-500 rounded hover:bg-indigo-600">Login</button>
+            </form>
+            <button class="mt-4 text-sm text-gray-400 hover:text-white" onclick="closeModal('loginModal')">Close</button>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-slate-800 p-8 rounded-xl w-96">
+            <h2 class="text-2xl font-bold mb-6">Register Organization</h2>
+            <form id="registerForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm mb-2">Organization Name</label>
+                    <input type="text" class="w-full p-2 rounded bg-slate-700 border border-slate-600" required>
+                </div>
+                <div>
+                    <label class="block text-sm mb-2">Email</label>
+                    <input type="email" class="w-full p-2 rounded bg-slate-700 border border-slate-600" required>
+                </div>
+                <div>
+                    <label class="block text-sm mb-2">Password</label>
+                    <input type="password" class="w-full p-2 rounded bg-slate-700 border border-slate-600" required>
+                </div>
+                <button type="submit" class="w-full py-2 bg-indigo-500 rounded hover:bg-indigo-600">Register</button>
+            </form>
+            <button class="mt-4 text-sm text-gray-400 hover:text-white" onclick="closeModal('registerModal')">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const loginModal = document.getElementById('loginModal');
+        const registerModal = document.getElementById('registerModal');
+
+        loginBtn.addEventListener('click', () => {
+            loginModal.classList.remove('hidden');
+        });
+
+        registerBtn.addEventListener('click', () => {
+            registerModal.classList.remove('hidden');
+        });
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        // Form submissions
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add login logic here
+            alert('Login functionality would be implemented here');
+            closeModal('loginModal');
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add registration logic here
+            alert('Registration functionality would be implemented here');
+            closeModal('registerModal');
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) closeModal('loginModal');
+            if (e.target === registerModal) closeModal('registerModal');
+        });
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
